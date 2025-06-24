@@ -92,7 +92,7 @@
 
 1. **Clone the repository**
    \`\`\`bash
-   git clone https://github.com/yourusername/task-manager.git
+   git clone (https://github.com/lokeshvijay7/task-manager-app)
    cd task-manager
    \`\`\`
 
