@@ -1,17 +1,6 @@
 # 📋 Task Manager Web Application
 
-<div align="center">
 
-![Task Manager Logo](https://img.shields.io/badge/Task-Manager-6366f1?style=for-the-badge&logo=task&logoColor=white)
-![MERN Stack](https://img.shields.io/badge/MERN-Stack-61DAFB?style=for-the-badge&logo=react&logoColor=black)
-![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
-![Version](https://img.shields.io/badge/Version-1.0.0-blue?style=for-the-badge)
-
-**A modern, full-stack task management application built with the MERN stack**
-
-[🚀 Live Demo](https://your-app-name.vercel.app) • [📖 Documentation](#documentation) • [🐛 Report Bug](https://github.com/yourusername/task-manager/issues) • [✨ Request Feature](https://github.com/yourusername/task-manager/issues)
-
-</div>
 
 ---
 
@@ -21,10 +10,10 @@
 <div align="center">
 
 **Login Page**
-![Login Page](screenshots/login.png)
+![Login Page](/frontend/screenshots/login.png)
 
 **Registration Page**  
-![Signup Page](screenshots/signup.png)
+![Signup Page](/frontend/screenshots/signup.png)
 
 </div>
 
@@ -32,20 +21,13 @@
 <div align="center">
 
 **Dashboard Overview**
-![Dashboard](screenshots/dashboard.png)
+![Dashboard](frontend/screenshots/dashboard.png)
 
 **Task Management**
-![Task Management](screenshots/task-management.png)
+![Task Management](/frontend/screenshots/task-management.png)
 
 </div>
 
-### 📱 Mobile Responsive
-<div align="center">
-
-**Mobile View**
-![Mobile View](screenshots/mobile-view.png)
-
-</div>
 
 ---
 
@@ -161,53 +143,6 @@
 
 ---
 
-## 📁 Project Structure
-
-\`\`\`
-task-manager/
-├── 📂 backend/
-│   ├── 📂 config/
-│   │   └── db.js                 # Database connection
-│   ├── 📂 controllers/
-│   │   ├── authController.js     # Authentication logic
-│   │   └── taskController.js     # Task management logic
-│   ├── 📂 middleware/
-│   │   └── auth.js              # JWT authentication middleware
-│   ├── 📂 models/
-│   │   ├── User.js              # User data model
-│   │   └── Task.js              # Task data model
-│   ├── 📂 routes/
-│   │   ├── auth.js              # Authentication routes
-│   │   └── tasks.js             # Task management routes
-│   ├── .env                     # Environment variables
-│   ├── server.js                # Main server file
-│   └── package.json             # Backend dependencies
-├── 📂 frontend/
-│   ├── 📂 public/
-│   ├── 📂 src/
-│   │   ├── 📂 components/
-│   │   │   ├── 📂 Tasks/
-│   │   │   │   ├── TaskColumn.js     # Task column component
-│   │   │   │   ├── TaskCard.js       # Individual task card
-│   │   │   │   ├── AddTaskModal.js   # Add task modal
-│   │   │   │   └── EditTaskModal.js  # Edit task modal
-│   │   │   └── ProtectedRoute.js     # Route protection
-│   │   ├── 📂 context/
-│   │   │   ├── AuthContext.js        # Authentication state
-│   │   │   └── TaskContext.js        # Task management state
-│   │   ├── 📂 pages/
-│   │   │   ├── Login.js              # Login page
-│   │   │   ├── Signup.js             # Registration page
-│   │   │   └── Dashboard.js          # Main dashboard
-│   │   ├── App.js                    # Main app component
-│   │   └── index.js                  # App entry point
-│   └── package.json             # Frontend dependencies
-├── 📂 screenshots/              # Application screenshots
-├── README.md                    # Project documentation
-└── LICENSE                     # MIT License
-\`\`\`
-
----
 
 ## 🔧 API Documentation
 
@@ -256,30 +191,6 @@ task-manager/
 
 ---
 
-## 🚀 Deployment
-
-### Frontend (Vercel)
-1. Push your code to GitHub
-2. Connect your repository to [Vercel](https://vercel.com)
-3. Deploy automatically!
-
-### Backend (Railway)
-1. Create account on [Railway](https://railway.app)
-2. Connect your GitHub repository
-3. Add environment variables:
-   \`\`\`env
-   MONGO_URI=your_mongodb_atlas_connection_string
-   JWT_SECRET=your_jwt_secret
-   NODE_ENV=production
-   \`\`\`
-4. Deploy!
-
-### Database (MongoDB Atlas)
-1. Create free cluster on [MongoDB Atlas](https://www.mongodb.com/atlas)
-2. Get connection string
-3. Add to your environment variables
-
----
 
 ## 🧪 Testing
 
@@ -375,18 +286,12 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ---
 
-## 📝 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
 
 ## 👨‍💻 Author
 
-**[Your Name]**
-- GitHub: [@yourusername](https://github.com/yourusername)
-- LinkedIn: [Your LinkedIn](https://linkedin.com/in/yourprofile)
-- Email: your.email@example.com
+**Lokesh K V**
+- GitHub: https://github.com/lokeshvijay7
+- Email: loki7cr@gmail.com
 
 ---
 
@@ -399,23 +304,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [MongoDB](https://www.mongodb.com/) - Database
 - [Vercel](https://vercel.com/) - Frontend deployment
 - [Railway](https://railway.app/) - Backend deployment
-
----
-
-## 📊 Project Stats
-
-![GitHub repo size](https://img.shields.io/github/repo-size/yourusername/task-manager)
-![GitHub contributors](https://img.shields.io/github/contributors/yourusername/task-manager)
-![GitHub stars](https://img.shields.io/github/stars/yourusername/task-manager?style=social)
-![GitHub forks](https://img.shields.io/github/forks/yourusername/task-manager?style=social)
-
----
-
-## 🔗 Links
-
-- **Live Application:** [https://your-app-name.vercel.app](https://your-app-name.vercel.app)
-- **API Documentation:** [https://your-api-name.railway.app](https://your-api-name.railway.app)
-- **Project Repository:** [https://github.com/yourusername/task-manager](https://github.com/yourusername/task-manager)
 
 ---
 
