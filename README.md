@@ -13,7 +13,7 @@
 ![Login Page](/frontend/Screenshots/login.png)
 
 **Registration Page**  
-![Signup Page](/frontend/screenshots/signup.png)
+![Signup Page](/frontend/Screenshots/signup.png)
 
 </div>
 
@@ -21,10 +21,10 @@
 <div align="center">
 
 **Dashboard Overview**
-![Dashboard](frontend/screenshots/dashboard.png)
+![Dashboard](frontend/Screenshots/dashboard.png)
 
 **Task Management**
-![Task Management](/frontend/screenshots/task-management.png)
+![Task Management](/frontend/Screenshots/task-management.png)
 
 </div>
 
