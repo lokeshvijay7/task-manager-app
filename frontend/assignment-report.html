@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager Application - Assignment Report</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #fff;
+        }
+        
+        .container {
+            max-width: 210mm;
+            margin: 0 auto;
+            padding: 20mm;
+            background: white;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 3px solid #6366f1;
+            padding-bottom: 20px;
+        }
+        
+        .header h1 {
+            color: #1e293b;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .header .subtitle {
+            color: #64748b;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+        
+        .student-info {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border-left: 5px solid #6366f1;
+        }
+        
+        .student-info h3 {
+            color: #1e293b;
+            margin-bottom: 15px;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .info-label {
+            font-weight: 600;
+            color: #374151;
+        }
+        
+        .info-value {
+            color: #6b7280;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+        }
+        
+        .section h2 {
+            color: #1e293b;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 10px;
+        }
+        
+        .section h3 {
+            color: #374151;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            margin-top: 25px;
+        }
+        
+        .tech-stack {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .tech-category {
+            background: #f1f5f9;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #6366f1;
+        }
+        
+        .tech-category h4 {
+            color: #1e293b;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+        
+        .tech-list {
+            list-style: none;
+        }
+        
+        .tech-list li {
+            padding: 5px 0;
+            color: #4b5563;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .tech-list li:before {
+            content: "✓";
+            color: #10b981;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .feature-card {
+            background: #fefefe;
+            border: 1px solid #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .feature-card h4 {
+            color: #1e293b;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+        
+        .feature-card p {
+            color: #6b7280;
+            font-size: 0.95em;
+        }
+        
+        .code-block {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        
+        .file-structure {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            border-left: 4px solid #6366f1;
+        }
+        
+        /* Enhanced Screenshot Styles */
+        .screenshot-container {
+            margin: 25px 0;
+            background: #f8fafc;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e2e8f0;
+        }
+        
+        .screenshot-header {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            color: white;
+            padding: 15px 20px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .screenshot-header::before {
+            content: "📱";
+            font-size: 1.2em;
+        }
+        
+        .screenshot-content {
+            padding: 20px;
+        }
+        
+        .screenshot-image {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            border: 1px solid #e2e8f0;
+            margin-bottom: 15px;
+        }
+        
+        .screenshot-placeholder {
+            background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+            border: 2px dashed #cbd5e1;
+            padding: 60px 20px;
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .screenshot-placeholder::before {
+            content: "📸";
+            font-size: 3em;
+            display: block;
+            margin-bottom: 15px;
+            opacity: 0.5;
+        }
+        
+        .screenshot-placeholder h4 {
+            color: #374151;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+        
+        .screenshot-placeholder p {
+            color: #64748b;
+            margin-bottom: 8px;
+        }
+        
+        .screenshot-description {
+            background: #ffffff;
+            padding: 15px;
+            border-radius: 6px;
+            border-left: 4px solid #6366f1;
+        }
+        
+        .screenshot-description h4 {
+            color: #1e293b;
+            margin-bottom: 8px;
+            font-size: 1em;
+        }
+        
+        .screenshot-description p {
+            color: #64748b;
+            font-size: 0.9em;
+            margin-bottom: 5px;
+        }
+        
+        .feature-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+        
+        .feature-tag {
+            background: #e0e7ff;
+            color: #3730a3;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: 500;
+        }
+        
+        .browser-mockup {
+            background: #f3f4f6;
+            border-radius: 8px;
+            padding: 8px;
+            margin-bottom: 15px;
+        }
+        
+        .browser-header {
+            background: #e5e7eb;
+            height: 30px;
+            border-radius: 6px 6px 0 0;
+            display: flex;
+            align-items: center;
+            padding: 0 12px;
+            margin-bottom: 2px;
+        }
+        
+        .browser-dots {
+            display: flex;
+            gap: 6px;
+        }
+        
+        .browser-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        
+        .browser-dot.red { background: #ef4444; }
+        .browser-dot.yellow { background: #f59e0b; }
+        .browser-dot.green { background: #10b981; }
+        
+        .browser-url {
+            background: white;
+            margin-left: 15px;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            color: #6b7280;
+            flex: 1;
+            max-width: 200px;
+        }
+        
+        .api-endpoint {
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .method {
+            background: #6366f1;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .method.post { background: #10b981; }
+        .method.put { background: #f59e0b; }
+        .method.delete { background: #ef4444; }
+        
+        .conclusion {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .conclusion h2 {
+            border: none;
+            color: white;
+            margin-bottom: 15px;
+        }
+        
+        .page-break {
+            page-break-before: always;
+        }
+        
+        @media print {
+            .container {
+                padding: 15mm;
+            }
+            
+            .page-break {
+                page-break-before: always;
+            }
+            
+            .screenshot-container {
+                break-inside: avoid;
+            }
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        th, td {
+            border: 1px solid #e2e8f0;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        th {
+            background: #f8fafc;
+            font-weight: 600;
+            color: #374151;
+        }
+        
+        .status-badge {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: 600;
+        }
+        
+        .status-completed {
+            background: #dcfce7;
+            color: #166534;
+        }
+        
+        .status-testing {
+            background: #fef3c7;
+            color: #92400e;
+        }
+        
+        /* Image upload helper styles */
+        .image-upload-guide {
+            background: #fffbeb;
+            border: 1px solid #fbbf24;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        
+        .image-upload-guide h4 {
+            color: #92400e;
+            margin-bottom: 10px;
+        }
+        
+        .image-upload-guide ol {
+            margin-left: 20px;
+            color: #78350f;
+        }
+        
+        .image-upload-guide li {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>Task Manager Web Application</h1>
+            <div class="subtitle">Full-Stack Development Assignment</div>
+            <div style="color: #6366f1; font-weight: 600;">MERN Stack Implementation</div>
+        </div>
+
+        <div class="student-info">
+            <h3>Information</h3>
+            <div class="info-grid">
+                <div class="info-item">
+                    <span class="info-label">Name:</span>
+                    <span class="info-value">Lokesh K V</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Student ID:</span>
+                    <span class="info-value">loki7cr@gmail.com</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Github:</span>
+                    <span class="info-value">https://github.com/lokeshvijay7</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Submission Date:</span>
+                    <span class="info-value">24/6/2025</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Assignment:</span>
+                    <span class="info-value">Task Manager Application</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Technology Stack:</span>
+                    <span class="info-value">MERN + Material UI</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Executive Summary</h2>
+            <p>This project presents a comprehensive Task Manager Web Application built using the MERN stack (MongoDB, Express.js, React.js, Node.js) with Material UI for the frontend design. The application provides a complete task management solution with user authentication, task organization by status, and a modern, responsive user interface.</p>
+            
+            <p>The application demonstrates proficiency in full-stack development, including RESTful API design, database modeling, state management, user authentication with JWT tokens, and modern React development practices. The project showcases both technical competency and attention to user experience design.</p>
+        </div>
+
+        <div class="section">
+            <h2>Technology Stack</h2>
+            <div class="tech-stack">
+                <div class="tech-category">
+                    <h4>Backend Technologies</h4>
+                    <ul class="tech-list">
+                        <li>Node.js (Runtime Environment)</li>
+                        <li>Express.js (Web Framework)</li>
+                        <li>MongoDB (Database)</li>
+                        <li>Mongoose (ODM)</li>
+                        <li>JWT (Authentication)</li>
+                        <li>bcryptjs (Password Hashing)</li>
+                        <li>CORS (Cross-Origin Resource Sharing)</li>
+                    </ul>
+                </div>
+                <div class="tech-category">
+                    <h4>Frontend Technologies</h4>
+                    <ul class="tech-list">
+                        <li>React.js (UI Library)</li>
+                        <li>Material UI (Component Library)</li>
+                        <li>React Router (Navigation)</li>
+                        <li>Axios (HTTP Client)</li>
+                        <li>Context API (State Management)</li>
+                        <li>React Hooks (State & Effects)</li>
+                        <li>Responsive Design</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+      
+        <div class="section">
+            <h2>Key Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h4>🔐 User Authentication</h4>
+                    <p>Secure user registration and login system using JWT tokens with password hashing via bcrypt.</p>
+                </div>
+                <div class="feature-card">
+                    <h4>📋 Task Management</h4>
+                    <p>Complete CRUD operations for tasks with status tracking (To Do, In Progress, Done).</p>
+                </div>
+                <div class="feature-card">
+                    <h4>🎨 Modern UI Design</h4>
+                    <p>Beautiful, responsive interface built with Material UI components and custom styling.</p>
+                </div>
+                <div class="feature-card">
+                    <h4>📱 Responsive Design</h4>
+                    <p>Fully responsive layout that works seamlessly across desktop, tablet, and mobile devices.</p>
+                </div>
+                <div class="feature-card">
+                    <h4>🔒 Protected Routes</h4>
+                    <p>Route protection ensuring only authenticated users can access the dashboard.</p>
+                </div>
+                <div class="feature-card">
+                    <h4>⚡ Real-time Updates</h4>
+                    <p>Instant UI updates using React Context API for state management.</p>
+                </div>
+                <div class="feature-card">
+                    <h4>🏷️ Priority System</h4>
+                    <p>Task prioritization with visual indicators (High, Medium, Low priority levels).</p>
+                </div>
+                <div class="feature-card">
+                    <h4>📊 Task Statistics</h4>
+                    <p>Visual dashboard showing task counts and distribution across different statuses.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section page-break">
+            <h2>Application Screenshots</h2>
+            
+            <div class="image-upload-guide">
+                <h4>📸 How to Add Your Screenshots:</h4>
+                <ol>
+                    <li>Take screenshots of your running application</li>
+                    <li>Save them as PNG/JPG files (e.g., login.png, dashboard.png)</li>
+                    <li>Replace the placeholder sections below with: <code>&lt;img src="your-image.png" class="screenshot-image" alt="Description"&gt;</code></li>
+                    <li>Or keep placeholders for print version</li>
+                </ol>
+            </div>
+
+            <div class="screenshot-container">
+                <div class="screenshot-header">
+                    Login Page Interface
+                </div>
+                <div class="screenshot-content">
+                    <div class="browser-mockup">
+                        <div class="browser-header">
+                            <div class="browser-dots">
+                                <div class="browser-dot red"></div>
+                                <div class="browser-dot yellow"></div>
+                                <div class="browser-dot green"></div>
+                            </div>
+                            <div class="browser-url">localhost:3000/login</div>
+                        </div>
+                        
+                        <img src="screenshots/login.png" class="screenshot-image" alt="Login Page Screenshot">
+                        
+
+                    </div>
+                    
+                    <div class="screenshot-description">
+                        <h4>Key Features Demonstrated:</h4>
+                        <p>• Clean, professional login form design</p>
+                        <p>• Email and password input validation</p>
+                        <p>• Error handling and user feedback</p>
+                        <p>• Responsive design for all screen sizes</p>
+                        <p>• Material UI components integration</p>
+                        
+                        <div class="feature-tags">
+                            <span class="feature-tag">Authentication</span>
+                            <span class="feature-tag">Form Validation</span>
+                            <span class="feature-tag">Responsive</span>
+                            <span class="feature-tag">Material UI</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="screenshot-container">
+                <div class="screenshot-header">
+                    User Registration Interface
+                </div>
+                <div class="screenshot-content">
+                    <div class="browser-mockup">
+                        <div class="browser-header">
+                            <div class="browser-dots">
+                                <div class="browser-dot red"></div>
+                                <div class="browser-dot yellow"></div>
+                                <div class="browser-dot green"></div>
+                            </div>
+                            <div class="browser-url">localhost:3000/signup</div>
+                        </div>
+                        
+                        <img src="screenshots/signup.png" class="screenshot-image" alt="Signup Page Screenshot">
+                        
+
+                    </div>
+                    
+                    <div class="screenshot-description">
+                        <h4>Key Features Demonstrated:</h4>
+                        <p>• User registration form with name, email, password fields</p>
+                        <p>• Real-time form validation and error messages</p>
+                        <p>• Consistent design with login page</p>
+                        <p>• Automatic redirect after successful registration</p>
+                        <p>• Loading states and user feedback</p>
+                        
+                        <div class="feature-tags">
+                            <span class="feature-tag">User Registration</span>
+                            <span class="feature-tag">Validation</span>
+                            <span class="feature-tag">UX Design</span>
+                            <span class="feature-tag">State Management</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="screenshot-container">
+                <div class="screenshot-header">
+                    Main Dashboard Interface
+                </div>
+                <div class="screenshot-content">
+                    <div class="browser-mockup">
+                        <div class="browser-header">
+                            <div class="browser-dots">
+                                <div class="browser-dot red"></div>
+                                <div class="browser-dot yellow"></div>
+                                <div class="browser-dot green"></div>
+                            </div>
+                            <div class="browser-url">localhost:3000/dashboard</div>
+                        </div>
+                        
+                        <img src="screenshots/dashboard.png" class="screenshot-image" alt="Dashboard Screenshot">
+
+                    </div>
+                    
+                    <div class="screenshot-description">
+                        <h4>Key Features Demonstrated:</h4>
+                        <p>• Professional header with user profile and logout</p>
+                        <p>• Task statistics cards showing counts by status</p>
+                        <p>• Three-column layout (To Do, In Progress, Done)</p>
+                        <p>• Floating action button for adding new tasks</p>
+                        <p>• Responsive grid system and modern styling</p>
+                        
+                        <div class="feature-tags">
+                            <span class="feature-tag">Dashboard Design</span>
+                            <span class="feature-tag">Task Statistics</span>
+                            <span class="feature-tag">Column Layout</span>
+                            <span class="feature-tag">User Profile</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="screenshot-container">
+                <div class="screenshot-header">
+                    Task Management Features
+                </div>
+                <div class="screenshot-content">
+                    <div class="browser-mockup">
+                        <div class="browser-header">
+                            <div class="browser-dots">
+                                <div class="browser-dot red"></div>
+                                <div class="browser-dot yellow"></div>
+                                <div class="browser-dot green"></div>
+                            </div>
+                            <div class="browser-url">localhost:3000/dashboard</div>
+                        </div>
+                        
+                        <img src="screenshots/task-management.png" class="screenshot-image" alt="Task Management Screenshot">
+                        
+
+                    </div>
+                    
+                    <div class="screenshot-description">
+                        <h4>Key Features Demonstrated:</h4>
+                        <p>• Beautiful task cards with hover effects</p>
+                        <p>• Priority indicators (High, Medium, Low) with color coding</p>
+                        <p>• Task actions menu (Edit, Delete) with confirmation dialogs</p>
+                        <p>• Date stamps and task descriptions</p>
+                        <p>• Add/Edit task modals with form validation</p>
+                        
+                        <div class="feature-tags">
+                            <span class="feature-tag">Task Cards</span>
+                            <span class="feature-tag">Priority System</span>
+                            <span class="feature-tag">CRUD Operations</span>
+                            <span class="feature-tag">Modal Forms</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        <div class="section page-break">
+            <h2>API Documentation</h2>
+            
+            <h3>Authentication Endpoints</h3>
+            <div class="api-endpoint">
+                <span class="method post">POST</span>/api/auth/signup
+                <br><strong>Description:</strong> Register a new user account
+                <br><strong>Body:</strong> { name, email, password }
+            </div>
+            
+            <div class="api-endpoint">
+                <span class="method post">POST</span>/api/auth/login
+                <br><strong>Description:</strong> Authenticate user and return JWT token
+                <br><strong>Body:</strong> { email, password }
+            </div>
+            
+            <div class="api-endpoint">
+                <span class="method">GET</span>/api/auth/profile
+                <br><strong>Description:</strong> Get current user profile (Protected)
+                <br><strong>Headers:</strong> Authorization: Bearer [token]
+            </div>
+
+            <h3>Task Management Endpoints</h3>
+            <div class="api-endpoint">
+                <span class="method">GET</span>/api/tasks
+                <br><strong>Description:</strong> Get all tasks for authenticated user, grouped by status
+                <br><strong>Headers:</strong> Authorization: Bearer [token]
+            </div>
+            
+            <div class="api-endpoint">
+                <span class="method post">POST</span>/api/tasks
+                <br><strong>Description:</strong> Create a new task
+                <br><strong>Body:</strong> { title, description, priority }
+                <br><strong>Headers:</strong> Authorization: Bearer [token]
+            </div>
+            
+            <div class="api-endpoint">
+                <span class="method put">PUT</span>/api/tasks/:id
+                <br><strong>Description:</strong> Update an existing task
+                <br><strong>Body:</strong> { title, description, status, priority }
+                <br><strong>Headers:</strong> Authorization: Bearer [token]
+            </div>
+            
+            <div class="api-endpoint">
+                <span class="method delete">DELETE</span>/api/tasks/:id
+                <br><strong>Description:</strong> Delete a task
+                <br><strong>Headers:</strong> Authorization: Bearer [token]
+            </div>
+        </div>
+
+        <!-- Database Schema -->
+        <div class="section">
+            <h2>Database Schema</h2>
+            
+            <h3>User Model</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Field</th>
+                        <th>Type</th>
+                        <th>Required</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>name</td>
+                        <td>String</td>
+                        <td>Yes</td>
+                        <td>User's full name (max 50 characters)</td>
+                    </tr>
+                    <tr>
+                        <td>email</td>
+                        <td>String</td>
+                        <td>Yes</td>
+                        <td>Unique email address with validation</td>
+                    </tr>
+                    <tr>
+                        <td>password</td>
+                        <td>String</td>
+                        <td>Yes</td>
+                        <td>Hashed password (min 6 characters)</td>
+                    </tr>
+                    <tr>
+                        <td>createdAt</td>
+                        <td>Date</td>
+                        <td>Auto</td>
+                        <td>Account creation timestamp</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Task Model</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Field</th>
+                        <th>Type</th>
+                        <th>Required</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>title</td>
+                        <td>String</td>
+                        <td>Yes</td>
+                        <td>Task title (max 200 characters)</td>
+                    </tr>
+                    <tr>
+                        <td>description</td>
+                        <td>String</td>
+                        <td>No</td>
+                        <td>Task description (max 500 characters)</td>
+                    </tr>
+                    <tr>
+                        <td>status</td>
+                        <td>Enum</td>
+                        <td>Yes</td>
+                        <td>To Do | In Progress | Done</td>
+                    </tr>
+                    <tr>
+                        <td>priority</td>
+                        <td>Enum</td>
+                        <td>Yes</td>
+                        <td>Low | Medium | High</td>
+                    </tr>
+                    <tr>
+                        <td>userId</td>
+                        <td>ObjectId</td>
+                        <td>Yes</td>
+                        <td>Reference to User model</td>
+                    </tr>
+                    <tr>
+                        <td>createdAt</td>
+                        <td>Date</td>
+                        <td>Auto</td>
+                        <td>Task creation timestamp</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Implementation Details -->
+        <div class="section page-break">
+            <h2>Implementation Details</h2>
+            
+            <h3>Security Features</h3>
+            <ul style="margin-left: 20px; margin-bottom: 20px;">
+                <li><strong>Password Hashing:</strong> All passwords are hashed using bcrypt with salt rounds</li>
+                <li><strong>JWT Authentication:</strong> Secure token-based authentication with 30-day expiration</li>
+                <li><strong>Route Protection:</strong> Middleware ensures only authenticated users access protected routes</li>
+                <li><strong>Input Validation:</strong> Server-side validation for all user inputs</li>
+                <li><strong>CORS Configuration:</strong> Proper cross-origin resource sharing setup</li>
+            </ul>
+
+            <h3>State Management</h3>
+            <p>The application uses React Context API for efficient state management:</p>
+            <ul style="margin-left: 20px; margin-bottom: 20px;">
+                <li><strong>AuthContext:</strong> Manages user authentication state, login/logout functionality</li>
+                <li><strong>TaskContext:</strong> Handles task CRUD operations and task state management</li>
+                <li><strong>Persistent Storage:</strong> JWT tokens stored in localStorage for session persistence</li>
+            </ul>
+
+            <h3>User Experience Features</h3>
+            <ul style="margin-left: 20px;">
+                <li><strong>Loading States:</strong> Skeleton loaders and loading indicators for better UX</li>
+                <li><strong>Error Handling:</strong> Comprehensive error messages and user feedback</li>
+                <li><strong>Responsive Design:</strong> Mobile-first approach with breakpoint optimization</li>
+                <li><strong>Smooth Animations:</strong> CSS transitions and hover effects for interactive elements</li>
+                <li><strong>Accessibility:</strong> ARIA labels and semantic HTML for screen readers</li>
+            </ul>
+        </div>
+
+        <!-- Testing & Quality Assurance -->
+        <div class="section page-break">
+            <h2>Testing & Quality Assurance</h2>
+            
+            <h3>Testing Checklist</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>Test Case</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>User Registration</td>
+                        <td>Create new account with valid data</td>
+                        <td><span class="status-badge status-completed">✓ Passed</span></td>
+                    </tr>
+                    <tr>
+                        <td>User Login</td>
+                        <td>Authenticate with correct credentials</td>
+                        <td><span class="status-badge status-completed">✓ Passed</span></td>
+                    </tr>
+                    <tr>
+                        <td>Task Creation</td>
+                        <td>Add new task with title and description</td>
+                        <td><span class="status-badge status-completed">✓ Passed</span></td>
+                    </tr>
+                    <tr>
+                        <td>Task Updates</td>
+                        <td>Edit task details and change status</td>
+                        <td><span class="status-badge status-completed">✓ Passed</span></td>
+                    </tr>
+                    <tr>
+                        <td>Task Deletion</td>
+                        <td>Remove task with confirmation dialog</td>
+                        <td><span class="status-badge status-completed">✓ Passed</span></td>
+                    </tr>
+                    <tr>
+                        <td>Route Protection</td>
+                        <td>Redirect unauthenticated users to login</td>
+                        <td><span class="status-badge status-completed">✓ Passed</span></td>
+                    </tr>
+                    <tr>
+                        <td>Responsive Design</td>
+                        <td>Test on mobile, tablet, and desktop</td>
+                        <td><span class="status-badge status-completed">✓ Passed</span></td>
+                    </tr>
+                    <tr>
+                        <td>Error Handling</td>
+                        <td>Display appropriate error messages</td>
+                        <td><span class="status-badge status-completed">✓ Passed</span></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Performance Optimization</h3>
+            <ul style="margin-left: 20px;">
+                <li><strong>Code Splitting:</strong> React lazy loading for optimal bundle size</li>
+                <li><strong>API Optimization:</strong> Efficient database queries with proper indexing</li>
+                <li><strong>Caching:</strong> Browser caching for static assets</li>
+                <li><strong>Compression:</strong> Gzip compression for production builds</li>
+            </ul>
+        </div>
+
+        <!-- Deployment -->
+        <div class="section">
+            <h2>Deployment & Production</h2>
+            
+            <h3>Deployment Strategy</h3>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h4>🚀 Backend Deployment</h4>
+                    <strong>Database:</strong> MongoDB Atlas<br>
+                    <strong>Environment:</strong> Production-ready with environment variables</p>
+                </div>
+                <div class="feature-card">
+                    <h4>🌐 Frontend Deployment</h4>
+                    <strong>Build:</strong> Optimized production build<br>
+                    <strong>CDN:</strong> Global content delivery network</p>
+                </div>
+            </div>
+
+            <h3>Environment Configuration</h3>
+            <div class="code-block">
+# Production Environment Variables
+PORT=5000
+MONGO_URI=mongodb+srv://username:password@cluster.mongodb.net/taskmanager
+JWT_SECRET=super_secure_production_secret_key
+NODE_ENV=production
+CORS_ORIGIN=https://your-frontend-domain.com
+            </div>
+
+
+        </div>
+
+        <!-- Future Enhancements -->
+        <div class="section page-break">
+            <h2>Future Enhancements</h2>
+            
+            <h3>Planned Features</h3>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h4>🎯 Drag & Drop</h4>
+                    <p>Implement drag-and-drop functionality between task columns for intuitive task status updates.</p>
+                </div>
+                <div class="feature-card">
+                    <h4>🔍 Search & Filter</h4>
+                    <p>Add advanced search and filtering options by priority, date, status, and keywords.</p>
+                </div>
+                <div class="feature-card">
+                    <h4>🌙 Dark Mode</h4>
+                    <p>Implement dark/light theme toggle with user preference persistence.</p>
+                </div>
+                <div class="feature-card">
+                    <h4>📅 Due Dates</h4>
+                    <p>Add deadline functionality with calendar picker and reminder notifications.</p>
+                </div>
+                <div class="feature-card">
+                    <h4>👥 Team Collaboration</h4>
+                    <p>Multi-user support with task assignment and team workspace features.</p>
+                </div>
+                <div class="feature-card">
+                    <h4>📊 Analytics</h4>
+                    <p>Task completion analytics, productivity insights, and progress tracking.</p>
+                </div>
+            </div>
+
+            <h3>Technical Improvements</h3>
+            <ul style="margin-left: 20px;">
+                <li><strong>Real-time Updates:</strong> WebSocket integration for live task updates</li>
+                <li><strong>Offline Support:</strong> Progressive Web App (PWA) capabilities</li>
+                <li><strong>Mobile App:</strong> React Native version for iOS and Android</li>
+                <li><strong>API Rate Limiting:</strong> Enhanced security with request throttling</li>
+                <li><strong>Automated Testing:</strong> Unit and integration test suites</li>
+            </ul>
+        </div>
+
+        <!-- Learning Outcomes -->
+        <div class="section">
+            <h2>Learning Outcomes</h2>
+            
+            <h3>Technical Skills Demonstrated</h3>
+            <ul style="margin-left: 20px; margin-bottom: 20px;">
+                <li><strong>Full-Stack Development:</strong> End-to-end application development with MERN stack</li>
+                <li><strong>RESTful API Design:</strong> Proper HTTP methods, status codes, and API structure</li>
+                <li><strong>Database Design:</strong> MongoDB schema design with relationships and validation</li>
+                <li><strong>Authentication & Security:</strong> JWT implementation with secure password handling</li>
+                <li><strong>State Management:</strong> React Context API for complex state handling</li>
+                <li><strong>UI/UX Design:</strong> Modern, responsive interface with Material UI</li>
+                <li><strong>Deployment:</strong> Production deployment with environment configuration</li>
+            </ul>
+
+            <h3>Problem-Solving Approach</h3>
+            <ul style="margin-left: 20px;">
+                <li><strong>Planning:</strong> Structured approach to feature requirements and technical architecture</li>
+                <li><strong>Implementation:</strong> Incremental development with testing at each stage</li>
+                <li><strong>Debugging:</strong> Systematic error handling and troubleshooting</li>
+                <li><strong>Optimization:</strong> Performance considerations and code quality improvements</li>
+            </ul>
+        </div>
+
+        <!-- Conclusion -->
+        <div class="conclusion">
+            <h2>Conclusion</h2>
+            <p>This Task Manager application successfully demonstrates comprehensive full-stack development skills using modern web technologies. The project showcases proficiency in both backend API development and frontend user interface design, resulting in a production-ready application with professional-grade features and user experience.</p>
+            
+            <p style="margin-top: 20px;">The implementation covers all fundamental aspects of web development including authentication, database design, state management, responsive design, and deployment strategies. The application is fully functional, secure, and ready for real-world usage.</p>
+            
+            <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.3);">
+                <strong>Project Status: ✅ Complete and Deployed</strong><br>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div style="text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid #e2e8f0; color: #64748b;">
+            <p>Task Manager Application - Full-Stack Development Assignment</p>
+            <p>Submitted by: lokesh K V | Gmail: loki7cr@gmail.com | Date: 24/6/2025</p>
+        </div>
+    </div>
+
+    <script>
+        // Add print functionality
+        function printPDF() {
+            window.print();
+        }
+        
+        // Add current date
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentDate = new Date().toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+            
+            // Replace 24/6/2025 with actual date
+            document.body.innerHTML = document.body.innerHTML.replace(/\[Current Date\]/g, currentDate);
+        });
+    </script>
+</body>
+</html>
