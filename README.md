@@ -10,7 +10,7 @@
 <div align="center">
 
 **Login Page**
-![Login Page](/frontend/screenshots/login.png)
+![Login Page](/frontend/Screenshots/login.png)
 
 **Registration Page**  
 ![Signup Page](/frontend/screenshots/signup.png)
